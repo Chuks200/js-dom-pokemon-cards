@@ -27,11 +27,19 @@ function createCard(pokemon) {
       cardText.appendChild(statItem);
     });
     card.appendChild(cardText);
+
+    const gamesList = document.createElement('ul');  
+  pokemon.game_indices.forEach(game => {
+    const gameItem = document.createElement('li');  
+    gameItem.textContent = game.version.name;  
+    gamesList.appendChild(gameItem); 
+  });
+  card.appendChild(gamesList); 
   
     return card;
   }
   
-  
+
 data.forEach(pokemon => {
     const card = createCard(pokemon);
     cardsContainer.appendChild(card);
